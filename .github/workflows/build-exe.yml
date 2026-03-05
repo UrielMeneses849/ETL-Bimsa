@@ -23,7 +23,7 @@ jobs:
 
       - name: Build EXE
         run: |
-          pyinstaller --onefile Bimsa_Cli.py
+          pyinstaller --onefile --clean --name bimsa_etl --add-data "logo_bimsa.jpg;." Bimsa_Cli.py
 
       - name: Upload EXE
         uses: actions/upload-artifact@v4
