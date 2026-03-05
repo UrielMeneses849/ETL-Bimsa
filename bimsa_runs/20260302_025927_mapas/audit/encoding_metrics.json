@@ -1,0 +1,8 @@
+{
+  "stage": "etl_json_to_excel",
+  "label": "DF DESPUÉS de repair/unescape (global)",
+  "metrics": {
+    "total_strings": 255,
+    "bad_strings": 0
+  }
+}

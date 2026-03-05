@@ -1,0 +1,13 @@
+[ENCODING_AUDIT] tipo=MAPAS
+created_at=2026-03-02T01:52:49
+
+== ANTES ==
+total_strings=264
+total_bad_strings=0
+OK: no mojibake típico detectado.
+
+== DESPUÉS ==
+total_strings=264
+total_bad_strings=0
+OK: no mojibake típico detectado.
+

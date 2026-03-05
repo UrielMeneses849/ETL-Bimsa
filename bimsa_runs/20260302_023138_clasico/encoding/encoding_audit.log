@@ -1,0 +1,5 @@
+[ENCODING_AUDIT_XML_TO_JSON]
+encoding_used=utf-8-sig
+bad_strings_before=0 / total=9260
+bad_strings_after=0 / total=9260
+json_written=bimsa_runs/20260302_023138_clasico/json/BIMSA_CLASICO.json

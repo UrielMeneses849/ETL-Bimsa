@@ -1,0 +1,6 @@
+[ENCODING_AUDIT_XML_TO_JSON]
+encoding_used=utf-8-sig
+bad_strings_before=0 / total=255
+bad_strings_after=0 / total=255
+json_written=bimsa_runs/20260302_022620_mapas/json/BIMSA_MAPAS.json
+[BIMSA_ETL] Iniciando ETL BIMSA...

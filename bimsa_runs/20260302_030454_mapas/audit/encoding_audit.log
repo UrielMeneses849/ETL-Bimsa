@@ -1,0 +1,24 @@
+[ENCODING_AUDIT_XML_TO_JSON]
+encoding_used=utf-8-sig
+bad_strings_before=0 / total=255
+bad_strings_after=0 / total=255
+best_records_path=WS_CL_OBRAS.datos
+records_count=11
+json_written=bimsa_runs/20260302_030454_mapas/json/BIMSA_MAPAS.json
+[BIMSA_ETL] Iniciando ETL BIMSA...
+[ENCODING_METRIC] mojibake_before=0
+[ENCODING_AUDIT] ANTES de repair/unescape (DF crudo desde JSON)
+ - OK: no se detectaron caracteres mojibake típicos.
+[ENCODING_AUDIT] fin
+
+[ENCODING_AUDIT_ETL] DF crudo desde JSON (ANTES de cualquier fix)
+bad_strings=0 total_strings=255
+
+[ENCODING_METRIC] mojibake_after=0
+[ENCODING_AUDIT] DESPUÉS de repair/unescape (global)
+ - OK: no se detectaron caracteres mojibake típicos.
+[ENCODING_AUDIT] fin
+
+[ENCODING_AUDIT_ETL] DF DESPUÉS de repair/unescape (global)
+bad_strings=0 total_strings=255
+

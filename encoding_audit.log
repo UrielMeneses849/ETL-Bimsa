@@ -1,0 +1,66 @@
+[ENCODING_METRIC] mojibake_before=0
+[ENCODING_AUDIT] ANTES de repair/unescape (entrada cruda)
+ - OK: no se detectaron caracteres mojibake típicos.
+[ENCODING_AUDIT] fin
+
+[ENCODING_METRIC] mojibake_after=0
+[ENCODING_AUDIT] DESPUÉS de repair/unescape
+ - OK: no se detectaron caracteres mojibake típicos.
+[ENCODING_AUDIT] fin
+
+[BIMSA_ETL] ETL terminado correctamente: BIMSA_CONTACTOS_20260302_013050.xlsx
+[ENCODING_METRIC] mojibake_before=0
+[ENCODING_AUDIT] ANTES de repair/unescape (entrada cruda)
+ - OK: no se detectaron caracteres mojibake típicos.
+[ENCODING_AUDIT] fin
+
+[ENCODING_METRIC] mojibake_after=0
+[ENCODING_AUDIT] DESPUÉS de repair/unescape
+ - OK: no se detectaron caracteres mojibake típicos.
+[ENCODING_AUDIT] fin
+
+[BIMSA_ETL] ETL terminado correctamente: BIMSA_CLASICO_20260302_013116.xlsx
+[ENCODING_METRIC] mojibake_before=0
+[ENCODING_AUDIT] ANTES de repair/unescape (entrada cruda)
+ - OK: no se detectaron caracteres mojibake típicos.
+[ENCODING_AUDIT] fin
+
+[ENCODING_METRIC] mojibake_after=0
+[ENCODING_AUDIT] DESPUÉS de repair/unescape
+ - OK: no se detectaron caracteres mojibake típicos.
+[ENCODING_AUDIT] fin
+
+[BIMSA_ETL] ETL terminado correctamente: BIMSA_PROSPECCION_20260302_013131.xlsx
+[ENCODING_METRIC] mojibake_before=0
+[ENCODING_AUDIT] ANTES de repair/unescape (entrada cruda)
+ - OK: no se detectaron caracteres mojibake típicos.
+[ENCODING_AUDIT] fin
+
+[ENCODING_METRIC] mojibake_after=0
+[ENCODING_AUDIT] DESPUÉS de repair/unescape
+ - OK: no se detectaron caracteres mojibake típicos.
+[ENCODING_AUDIT] fin
+
+[BIMSA_ETL] ETL terminado correctamente: BIMSA_MAPAS_20260302_013143.xlsx
+[ENCODING_METRIC] mojibake_before=0
+[ENCODING_AUDIT] ANTES de repair/unescape (entrada cruda)
+ - OK: no se detectaron caracteres mojibake típicos.
+[ENCODING_AUDIT] fin
+
+[ENCODING_METRIC] mojibake_after=0
+[ENCODING_AUDIT] DESPUÉS de repair/unescape
+ - OK: no se detectaron caracteres mojibake típicos.
+[ENCODING_AUDIT] fin
+
+[BIMSA_ETL] ETL terminado correctamente: BIMSA_MAPAS_20260302_015031.xlsx
+[ENCODING_METRIC] mojibake_before=0
+[ENCODING_AUDIT] ANTES de repair/unescape (entrada cruda)
+ - OK: no se detectaron caracteres mojibake típicos.
+[ENCODING_AUDIT] fin
+
+[ENCODING_METRIC] mojibake_after=0
+[ENCODING_AUDIT] DESPUÉS de repair/unescape
+ - OK: no se detectaron caracteres mojibake típicos.
+[ENCODING_AUDIT] fin
+
+[BIMSA_ETL] ETL terminado correctamente: BIMSA_PROSPECCION_20260302_015426.xlsx

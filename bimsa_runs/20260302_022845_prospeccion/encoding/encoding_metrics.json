@@ -1,0 +1,13 @@
+{
+  "stage": "xml_to_json",
+  "encoding_used": "utf-8-sig",
+  "before": {
+    "total_strings": 248,
+    "bad_strings": 0
+  },
+  "after": {
+    "total_strings": 248,
+    "bad_strings": 0
+  },
+  "json_path": "bimsa_runs/20260302_022845_prospeccion/json/BIMSA_PROSPECCION.json"
+}
