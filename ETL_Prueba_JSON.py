@@ -801,7 +801,7 @@ def _apply_branding_row(
     fecha_fin: Optional[str] = None,
     logo_path: Optional[str] = None,
 ):
-    ws.row_dimensions[1].height = 70
+    ws.row_dimensions[1].height = 80
 
     white = PatternFill("solid", "FFFFFF")
     bottom_side = Side(style="thin", color="000000")
@@ -832,7 +832,7 @@ def _apply_branding_row(
             col=0,
             colOff=0,
             row=0,
-            rowOff=140000  # ← centra verticalmente
+            rowOff=180000  # ← centra verticalmente
         )
 
         img.anchor = OneCellAnchor(
