@@ -801,7 +801,7 @@ def _apply_branding_row(
     fecha_fin: Optional[str] = None,
     logo_path: Optional[str] = None,
 ):
-    ws.row_dimensions[1].height = 64
+    # ws.row_dimensions[1].height = 60
 
     white = PatternFill("solid", "FFFFFF")
     bottom_side = Side(style="thin", color="000000")
@@ -828,13 +828,23 @@ def _apply_branding_row(
         img.width = 200
         img.height = 50
 
-        dx_px = 5
-        dy_px = 12
+        marker = AnchorMarker(
+            col=0,
+            colOff=0,
+            row=0,
+            rowOff=120000  # ← centra verticalmente
+        )
 
-        marker = AnchorMarker(col=0, colOff=pixels_to_EMU(dx_px), row=0, rowOff=pixels_to_EMU(dy_px))
-        size = XDRPositiveSize2D(pixels_to_EMU(img.width), pixels_to_EMU(img.height))
-        img.anchor = OneCellAnchor(_from=marker, ext=size)
+        img.anchor = OneCellAnchor(
+            _from=marker,
+            ext=XDRPositiveSize2D(
+                pixels_to_EMU(img.width),
+                pixels_to_EMU(img.height)
+            )
+        )
+
         ws.add_image(img)
+
     else:
         ws["A1"].value = "BimsaReports"
         ws["A1"].font = Font(name="Poppins", size=18, bold=True, color="666666")
@@ -851,6 +861,12 @@ def _apply_branding_row(
         f"Usuario: {usuario}",
         f"Fecha de descarga: {fecha_descarga}",
     ]
+
+    info_cell.alignment = Alignment(
+        horizontal="left",
+        vertical="center",
+        wrap_text=True
+    )
 
     if tipo_fecha and fecha_inicio and fecha_fin:
         info_lines.append(
@@ -1023,7 +1039,6 @@ def ETL_BIMSA(
         "puesto_3",
     }
 
-    # Limpieza general (excluyendo columnas catálogo)
     for col in df.select_dtypes(include="object").columns:
 
         norm_col = _norm_colkey(col)
