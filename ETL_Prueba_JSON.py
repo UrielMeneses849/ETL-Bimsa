@@ -346,6 +346,10 @@ def _unescape_quotes_backslashes(s: str) -> str:
     return s
 
 def _repair_all_strings_df(df: pd.DataFrame) -> pd.DataFrame:
+
+    # caracteres típicos de mojibake
+    pattern = re.compile(r"[ÃÂ�µ¥¤¢à¨]")
+
     def fix(v):
         if isinstance(v, str):
             v = _repair_mojibake(v)
@@ -353,7 +357,18 @@ def _repair_all_strings_df(df: pd.DataFrame) -> pd.DataFrame:
         return v
 
     for col in df.select_dtypes(include="object").columns:
-        df[col] = df[col].map(fix)
+
+        series = df[col]
+
+        # Evita procesar columnas sin síntomas
+        try:
+            if not series.astype(str).str.contains(pattern).any():
+                continue
+        except Exception:
+            continue
+
+        df[col] = series.map(fix)
+
     return df
 
 
@@ -594,23 +609,26 @@ def _drop_localizacion2(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 def _build_contacto(df: pd.DataFrame, n: int) -> pd.Series:
-    nom = f"Nombre_{n}"
-    pat = f"Paterno_{n}"
-    mat = f"Materno_{n}"
 
-    def join_row(row):
-        parts = []
-        for k in (nom, pat, mat):
-            v = row.get(k, None)
-            if v is None or (isinstance(v, float) and pd.isna(v)):
-                continue
-            s = str(v).strip()
-            if not s or s.lower() == "nan":
-                continue
-            parts.append(s)
-        return " ".join(parts).strip() if parts else None
+    cols = [f"Nombre_{n}", f"Paterno_{n}", f"Materno_{n}"]
 
-    return df.apply(join_row, axis=1)
+    existing = [c for c in cols if c in df.columns]
+
+    if not existing:
+        return pd.Series([None] * len(df), index=df.index)
+
+    contacto = (
+        df[existing]
+        .fillna("")
+        .astype(str)
+        .agg(" ".join, axis=1)
+        .str.replace(r"\s+", " ", regex=True)
+        .str.strip()
+    )
+
+    contacto = contacto.replace("", None)
+
+    return contacto
 
 
 # =========================================================
@@ -706,8 +724,14 @@ def _apply_section_borders(ws, header_row: int, first_data_row: int, nrows: int,
 
     # Aplicar borde a todas las filas visibles del reporte
     for col in section_starts:
-        for row in range(header_row - 1, nrows + 1):
-            cell = ws.cell(row=row, column=col)
+
+        for row_cells in ws.iter_rows(
+                min_row=header_row - 1,
+                max_row=nrows,
+                min_col=col,
+                max_col=col
+        ):
+            cell = row_cells[0]
 
             existing = cell.border
 
@@ -723,10 +747,14 @@ def _apply_row_borders(ws, first_data_row: int, nrows: int, ncols: int):
 
     row_side = Side(style="thin", color="b0b0b0")
 
-    for row in range(first_data_row, nrows + 1):
-        for col in range(1, ncols + 1):
+    for row in ws.iter_rows(
+        min_row=first_data_row,
+        max_row=nrows,
+        min_col=1,
+        max_col=ncols
+    ):
 
-            cell = ws.cell(row=row, column=col)
+        for cell in row:
 
             existing = cell.border
 
@@ -1046,7 +1074,15 @@ def ETL_BIMSA(
         if norm_col in CATALOGO_COLUMNS:
             continue
 
-        df[col] = df[col].map(lambda v, c=col: _smart_text_format(v, c))
+        series = df[col]
+
+        # Si la columna está vacía o tiene solo NaN no procesamos
+        if series.isna().all():
+            continue
+
+        df[col] = series.map(
+            lambda v, c=col: _smart_text_format(v, c) if isinstance(v, str) else v
+        )
 
     # Reglas por tipo
     force_upper_proyecto_mapas = (tipo_upper == "MAPAS")
